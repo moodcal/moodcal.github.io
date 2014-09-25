@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-50807172-1', 'worldcup.qiniudn.com');
+            ga('send', 'pageview');
+        </script>
+
+
         <meta charset="utf-8">
         <title>宝宝成长记</title>
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +42,7 @@
                                     <!-- <li><a href="#">首页</a></li> -->
                                     <!-- <li><a href="#">WORK</a></li> -->
                                     <!-- <li><a href="#">博客</a></li> -->                                    
-                                    <li><a href="mailto:support@upmemo.com">support@upmemo.com</a></li>
+                                    <li><a href="mailto:support@upmemo.com" onclick="ga('send', 'event', 'mail_button', 'click', 'ios');">support@upmemo.com</a></li>
                                 </ul>
 <!--                                 <form class="navbar-form pull-left">
                                     <a class="btn btn-primary" href="#">SIGN IN</a>
@@ -51,7 +62,7 @@
                             <p>只需要每天给宝宝记录一点点 ...</br>就能拍出这个世界上最珍贵，最温馨的 宝宝成长纪录片。</p>
                             <p></br></p>
                             <div class="btns">
-                                <a class="btn btn-primary" href="https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8"><span class="fui-apple"> </span>AppStore 下载</a>
+                                <a class="btn btn-primary" href="https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8" onclick="ga('send', 'event', 'ios_button', 'click', 'ios');"><span class="fui-apple"> </span>AppStore 下载</a>
                                 <!-- <img src="./img/upmemo_appstore.png" width="80" height="80" alt=""> -->
                             </div>
                         </div>
