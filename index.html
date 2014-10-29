@@ -64,9 +64,8 @@
                             <p>只需要每天给宝宝记录一点点 ...</br>就能拍出这个世界上最珍贵，最温馨的 宝宝成长纪录片。</p>
                             <p></br></p>
                             <div class="btns">
-                                <a class="btn btn-primary" href="https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8" onclick="ga('send', 'event', 'ios_button', 'click', 'ios');"><span class="fui-apple"> </span>AppStore 下载</a>
+                                <a id="iosdl" class="btn btn-primary" href="https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8" onclick="ga('send', 'event', 'ios_button', 'click', 'ios');"><span class="fui-apple"> </span>AppStore 下载</a>
                                 <!-- <img src="./img/upmemo_appstore.png" width="80" height="80" alt=""> -->
-								&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://mp.weixin.qq.com/mp/redirect?url=https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8" >Apple AppStore</a>
                             </div>
                         </div>
                     </div>
@@ -193,3 +192,21 @@ Keywords:
         <script src="js/script.js"></script>
     </body>
 </html>
+
+<script type="text/javascript">
+window.onload = function(){
+	if(isWeiXin()){
+		var p = document.getElementById('iosdl');
+		p.setAttribute("href", "http://mp.weixin.qq.com/mp/redirect?url=https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8");
+	}
+}
+
+function isWeiXin(){
+	var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script> 
