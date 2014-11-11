@@ -201,21 +201,21 @@
             <footer class="footer-4 bg-midnight-blue">
                 <div class="container">
                     <a class="brand" href="#">upmemo</a>				
+                    <div style="float: right;padding-right:20px;">
+                        <wb:share-button appkey="5Ci8Jz" addition="simple" type="button" ralateUid="5317553023" default_text="【upmemo】亲密育儿， 关爱成长。最好用的宝宝成长记录APP，快来使用吧！" pic="http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro2%402x.jpg||http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro3%402x.jpg||http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro1%402x.jpg">
+                        </wb:share-button>
+                    </div>
                 </div>
 				
             </footer>
 
-			<div style="float: right;padding-right:20px;"><wb:share-button appkey="5Ci8Jz" addition="simple" type="button" ralateUid="5317553023" default_text="【upmemo】亲密育儿， 关爱成长。最好用的宝宝成长记录APP，快来使用吧！" pic="http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro2%402x.jpg||http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro3%402x.jpg||http%3A%2F%2Fwww.upmemo.com%2Fimg%2Fintro1%402x.jpg"></wb:share-button></div>
-        </div>
-
-		
+        </div>		
 
 		<div style="position: absolute; top: -999px;left: -999px;">
-Keywords:
-<a href="http://www.upmemo.com/sitemap1.html" title="宝宝成长记" target="_blank"><strong>宝宝成长记</strong></a> 
-
-<a href="http://www.upmemo.com/sitemap1.xml" title="宝宝成长记" target="_blank"><strong>宝宝成长记</strong></a> 
-</div>
+            Keywords:
+            <a href="http://www.upmemo.com/sitemap1.html" title="宝宝成长记" target="_blank"><strong>宝宝成长记</strong></a> 
+            <a href="http://www.upmemo.com/sitemap1.xml" title="宝宝成长记" target="_blank"><strong>宝宝成长记</strong></a> 
+        </div>
 
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="../../common-files/js/jquery-1.10.2.min.js"></script>
@@ -228,18 +228,18 @@ Keywords:
 </html>
 
 <script type="text/javascript">
-window.onload = function(){
-	if(isWeiXin()){
-		var p = document.getElementById('iosdl');
-		p.setAttribute("href", "http://mp.weixin.qq.com/mp/redirect?url=https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8");
-	}
-}
+    window.onload = function(){
+    	if(isWeiXin()){
+    		var p = document.getElementById('iosdl');
+    		p.setAttribute("href", "http://mp.weixin.qq.com/mp/redirect?url=https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8");
+    	}
+    }
 
-function isWeiXin(){
-	var ua = window.navigator.userAgent.toLowerCase();
-		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+    function isWeiXin(){
+    	var ua = window.navigator.userAgent.toLowerCase();
+		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
