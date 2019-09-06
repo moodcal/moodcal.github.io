@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>privacy</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 20px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+  -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+  table, pre {
+    page-break-inside: avoid;
+  }
+  pre {
+    word-wrap: break-word;
+  }
+}
+</style>
+
+
+</head>
+
+<body>
+
+    <h1>服务条款</h1>
+    <p>
+      感谢使用宝宝成长记！以下服务条款（“条款”）对您使用和访问我们的服务、客户端软件和网站（“服务”）做出了规定。使用我们的服务，即表示您同意接受这些条款的约束，并将阅读我们的隐私政策和服务条款政策。如果您是代表某个组织使用我们的服务，则您代表该组织同意这些条款。
+    </p>
+    <h2>您的资料与您的权限</h2>
+    <p>
+      当您使用我们的服务时，您向我们提供您的文件、内容、电子邮件、通讯录等（“您的资料”）。您是资料的所有者。除了提供服务所需的有限权利外，这些条款不授予我们对您的资料的任何权利。 
+我们需要您的允许才能执行您要求我们执行的操作，例如托管、备份和共享您的资料。我们的服务还将向您提供照片、日记、视频的存储，轻松排序、编辑、共享和搜索等功能。这些功能以及其他功能可能会要求我们的系统访问、存储和扫描您的资料。您需提供给我们执行这些操作的权限，而此权限可扩展至我们的附属公司以及与我们合作的受信任第三方。
+    </p>
+    <h2>共享您的资料</h2>
+    <p>
+      我们的服务可让您与其他人共享资料，请仔细考虑要共享的内容。
+    </p>
+    <h2>您的责任</h2>
+    <p>
+      您需为自己的行为、资料负责，必须遵守我们的服务条款。服务中的内容可能受其他人的知识产权保护。除非您已获得相关权利，否则请勿复制、上传、下载或共享内容。我们可能会审核您的行为与内容，检查您是否遵守这些条款。但是，审核不是我们的义务。我们对用户通过服务发布和共享的内容不承担责任。
+请保护您用于访问服务的密码，确保其他人对密码没有访问权限，并使您的帐户信息保持最新。
+    </p>
+    <h2>软件</h2>
+    <p>
+      我们的部分服务允许您下载客户端软件（“软件”），软件可能会自动更新。只要您遵守这些条款，我们便向您提供有限的、非排他的、不可转让且可撤销的许可证，允许您仅出于访问服务的目的而使用软件。限于根据开源许可提供的软件组件，我们向您提供该许可，且该许可的规定可明确覆盖这些条款中的部分条款。除非以下限制被法律禁止，否则您同意不对服务进行反向工程或反编译，不尝试这样做，也不协助任何人这样做。
+    </p>
+    <h2>我们的资料</h2>
+    <p>
+      服务受版权法、商标法和其他法律的保护。这些条款不授予您对服务、服务中其他人的内容和其他品牌特性的任何权利、所有权或利益。我们欢迎您的反馈意见，但请注意我们可能使用这些意见或建议而不向您承担任何义务。
+    </p>
+    <h2>版权</h2>
+    <p>
+      我们尊重其他人的知识产权，同时也要求您这么做。对于涉嫌侵犯版权的通知，如果符合法律规定并且是按照我们的版权政策报告给我们，我们将作出响应。我们保留删除或禁用涉嫌侵权的内容，并终止屡次侵权者帐户的权利。
+    </p>
+    <h2>付费帐户</h2>
+    <p>
+      计费。您可以增加存储空间并向帐户添加付费功能（将您的帐户转为“付费帐户”）。从您转为付费帐户之日起，我们会自动在每个周期性续订之日向您收费，直至您取消为止。您应承担所有适用税金，必要时我们将向您收取税金。
+    </p>
+    <p>
+      不退款。您随时可以取消宝宝成长记的付费帐户，但除非法律要求，否则我们不会向您退款。
+    </p>
+    <p>
+      降级。在您取消付费帐户或在我们根据这些条款终止该帐户之前，您的付费帐户一直有效。如果您不按时支付付费帐户的费用，我们有权中止帐户或将存储空间降至免费空间水平。
+    </p>
+    <p>
+      变更。我们可能会调整实际费用，但会通过发送电子邮件到您帐户的关联电子邮件地址的方式预先向您通知这些调整。
+    </p>
+    <h2>终止</h2>
+    <p>
+      您随时可停止使用我们的服务。我们也保留随时单方决定中止或结束服务的权利，恕不另行通知。例如，如果您未遵守这些条款，或者您使用服务的方式将使我们承担法律责任、干扰服务运行或干扰他人使用服务，我们可以中止或终止您使用我们的服务。
+    </p>
+    <h2>按“原样”提供服务</h2>
+    <p>
+      尽管我们希望提供一流的服务，但是我们不能保证服务的某些相关事项。在法律允许的最大范围内，宝宝成长记对服务不做任何明示或暗示的担保。服务“按原样”提供。我们同时否认任何适销性、特定用途适用性或不侵权性的担保。一些地方不允许本段内容中的免责声明，因此这些声明可能对您不适用。
+    </p>
+    <h2>责任限制</h2>
+    <p>
+      在法律允许的最大范围内，除了由于宝宝成长记的欺诈行为、欺诈性虚假陈述或重大疏忽而导致的责任外，宝宝成长记不对下述各项负任何责任：
+    </p>
+    <p>(A) 任何间接、特殊、附带、惩罚性、惩戒性或后果性的损失</p>
+    <p>(B) 无论依据何等法律理论提出的效用、数据、业务或利润的损失</p>
+    <p>无论是否有人已向宝宝成长记警告过发生这类损害的可能性，也不管是否有某项补救措施未能实现其基本用途，上述免责说明均有效。</p>
+    <h2>解决争议</h2>
+    <p>
+      让我们先自己解决问题。我们希望在无需正式起诉的情况下解决您的问题。在针对宝宝成长记提起诉讼之前，您同意会尝试通过联系<a href='mailto:support@upmemo.com'>support@upmemo.com</a>来以非正式办法解决争议。我们也将尝试通过电子邮件联系来非正式地解决争议。
+    </p>
+    <h2>放弃、可分割性和转让</h2>
+    <p>
+      宝宝成长记未能执行某项规定并不等于放弃稍后执行的权利。如果发现某项规定无法执行，条款的其他规定仍然具有完整效力，且我们将以最能反映我们意图的可执行规定取代之。您不得转让您在这些条款下的任何权利，任何该类尝试都是无效的。宝宝成长记可将其权利转让给任何附属公司或子公司，或者对服务相关业务有兴趣的任何继任者。
+    </p>
+    <h2>服务条款修改</h2>
+    <p>
+      我们可能会不时修订这些条款，最新版本会发布在我们的网站上。如果修订内容会减少您的权利，我们就会通知您（例如通过发送邮件到与您的帐户关联的电子邮件地址、在我们的博客或本页面上发布）。如果您在修订生效后继续使用或访问服务，即表示您同意接受修订后条款的约束。
+    </p>
+
+
+
+
+</body>
+
+</html>
