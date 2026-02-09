@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>宝宝成长记</title>
-    <meta name="keywords" content="宝宝成长记" />
-    <meta name="description" content="宝宝成长记-只需要每周给宝宝记录一点点... 就能拍出这个世界上最珍贵，最温馨的 宝宝成长记" />
+    <title>宝宝成长记 - 记录点滴，珍藏一路</title>
+    
+    <meta name="keywords" content="宝宝成长记, 亲子记录, 育儿, 成长相册, 打印成书, 疫苗提醒" />
+    <meta name="description" content="宝宝成长记-只需要每周给宝宝记录一点点... 就能拍出这个世界上最珍贵，最温馨的宝宝成长记。支持一键打印成书。" />
     
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <link rel="shortcut icon" href="./img/favicon.ico">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +18,10 @@
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 手机外壳容器 - 极简版 */
+        /* 手机外壳容器 */
         .phone-shell {
             max-width: 280px; 
             width: 100%;
@@ -29,7 +31,7 @@
             box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             background-color: #fff;
-            display: flex; 
+            display: flex; /* 消除底部空隙 */
         }
 
         /* 平板外壳 */
@@ -59,17 +61,27 @@
     </script>
 </head>
 
-<body class="bg-slate-50 pb-20">
+<body class="bg-slate-50">
 
-    <nav class="bg-white/80 backdrop-blur sticky top-0 z-50 border-b border-slate-200">
+    <nav class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <img src="./img/icon@2x.png" width="40" height="40" class="rounded-lg shadow-sm" alt="Logo">
-                <span class="font-bold text-lg text-slate-800">宝宝成长记</span>
+                <span class="font-bold text-lg text-slate-800 tracking-tight">宝宝成长记</span>
             </div>
-            <a href="mailto:support@upmemo.com" onclick="ga('send', 'event', 'mail_button', 'click', 'ios');" class="text-sm text-sky-600 font-medium hover:text-sky-700 transition">
-                support@upmemo.com
-            </a>
+            
+            <div class="flex items-center gap-4 sm:gap-6 text-sm font-medium">
+                <a href="howto.html" class="text-slate-600 hover:text-sky-600 transition flex items-center gap-1 group">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-sky-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <span class="hidden sm:inline">如何使用</span>
+                    <span class="sm:hidden">教程</span>
+                </a>
+                <a href="print.html" class="text-slate-600 hover:text-sky-600 transition flex items-center gap-1 group">
+                    <svg class="w-4 h-4 text-slate-400 group-hover:text-sky-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <span class="hidden sm:inline">打印成书</span>
+                    <span class="sm:hidden">印书</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -85,7 +97,7 @@
                 可一键出书，一键出电影
             </p>
 
-            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <a id="iosdl" href="https://itunes.apple.com/cn/app/upmemo/id607998690?mt=8" onclick="ga('send', 'event', 'ios_button', 'click', 'ios');" 
                    class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-lg shadow-slate-200">
                     <svg class="w-5 h-5 mb-1" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
@@ -98,6 +110,15 @@
                     <span>Android 下载</span>
                 </a>
             </div>
+
+            <div class="flex justify-center gap-6 text-sm text-slate-500">
+                <a href="print.html" class="hover:text-sky-600 transition underline underline-offset-4 decoration-slate-300 hover:decoration-sky-500">
+                    了解如何打印成书 &rarr;
+                </a>
+                <a href="howto.html" class="hover:text-sky-600 transition underline underline-offset-4 decoration-slate-300 hover:decoration-sky-500">
+                    查看新手入门教程 &rarr;
+                </a>
+            </div>
         </div>
     </header>
 
@@ -108,7 +129,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">丰富的记录类型</h3>
                 <p class="text-slate-500 mb-8 text-sm">适合各个年龄段</p>
                 <div class="phone-shell">
-                    <img src="./img/0.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/0.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -116,7 +137,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">微信一样的清爽</h3>
                 <p class="text-slate-500 mb-8 text-sm">宝宝成长历程一目了然</p>
                 <div class="phone-shell">
-                    <img src="./img/1.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/1.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -124,7 +145,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">每日记录详情</h3>
                 <p class="text-slate-500 mb-8 text-sm">任何记录都可以图文并茂</p>
                 <div class="phone-shell">
-                    <img src="./img/8.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/8.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -132,7 +153,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">健康档案</h3>
                 <p class="text-slate-500 mb-8 text-sm">健康数据都在这里</p>
                 <div class="phone-shell">
-                    <img src="./img/2.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/2.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -140,7 +161,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">生病记录</h3>
                 <p class="text-slate-500 mb-8 text-sm">详细的生病，跟踪记录</p>
                 <div class="phone-shell">
-                    <img src="./img/7.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/7.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -148,7 +169,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">疫苗提醒</h3>
                 <p class="text-slate-500 mb-8 text-sm">自动生成产检，疫苗提醒</p>
                 <div class="phone-shell">
-                    <img src="./img/10.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/10.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -156,7 +177,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">成长故事</h3>
                 <p class="text-slate-500 mb-8 text-sm">宝宝的成长历程真的很精彩</p>
                 <div class="phone-shell">
-                    <img src="./img/5.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/5.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -164,15 +185,18 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">成长相册</h3>
                 <p class="text-slate-500 mb-8 text-sm">一键导入照片, 一键出书</p>
                 <div class="phone-shell">
-                    <img src="./img/3.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/3.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center hover:shadow-md transition">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 text-center hover:shadow-md transition ring-2 ring-transparent hover:ring-sky-100">
                 <h3 class="text-xl font-bold text-slate-800 mb-2">成长书</h3>
                 <p class="text-slate-500 mb-8 text-sm">所有记录都可转成长书，可打印</p>
                 <div class="phone-shell">
-                    <img src="./img/12.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/12.jpg" alt="Intro" class="phone-content-img" loading="lazy">
+                </div>
+                <div class="mt-4">
+                    <a href="print.html" class="text-xs text-sky-500 font-bold hover:underline">了解详情 &rarr;</a>
                 </div>
             </div>
 
@@ -180,7 +204,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">统计图表</h3>
                 <p class="text-slate-500 mb-8 text-sm">详尽清晰的图表，密切关注宝宝成长</p>
                 <div class="phone-shell">
-                    <img src="./img/4.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/4.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -188,7 +212,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">标签</h3>
                 <p class="text-slate-500 mb-8 text-sm">可自定义记录类型</p>
                 <div class="phone-shell">
-                    <img src="./img/6.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/6.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -196,7 +220,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">宝宝语录</h3>
                 <p class="text-slate-500 mb-8 text-sm">宝宝各种纯真可爱, 怎能错过?</p>
                 <div class="phone-shell">
-                    <img src="./img/9.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/9.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -204,7 +228,7 @@
                 <h3 class="text-xl font-bold text-slate-800 mb-2">暖心好评</h3>
                 <p class="text-slate-500 mb-8 text-sm">真实用户的好评是这样的❤️</p>
                 <div class="phone-shell">
-                    <img src="./img/13.jpg" alt="Intro" class="phone-content-img">
+                    <img src="./img/13.jpg" alt="Intro" class="phone-content-img" loading="lazy">
                 </div>
             </div>
 
@@ -218,18 +242,24 @@
                 多设备自动同步, 爸爸妈妈可以同时给宝宝记录
             </p>
             <div class="relative inline-block">
-                <img src="./img/cloud.jpg" alt="iPad" class="ipad-frame w-full h-auto">
+                <img src="./img/ipad2@2x.png" alt="iPad" class="ipad-frame w-full h-auto" loading="lazy">
             </div>
         </div>
     </section>
 
     <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="text-white font-bold text-lg mb-2">
+            <p class="text-white font-bold text-lg mb-6">
                 宝宝成长记 (适用于各个年龄段)
             </p>
             
-            <div class="text-xs text-slate-600 space-y-2 border-t border-slate-800 pt-6 mt-6">
+            <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm font-medium">
+                <a href="howto.html" class="hover:text-white transition">如何使用</a>
+                <a href="print.html" class="hover:text-white transition">打印成书</a>
+                <a href="mailto:support@upmemo.com" class="hover:text-white transition">联系我们</a>
+            </div>
+            
+            <div class="text-xs text-slate-600 space-y-2 border-t border-slate-800 pt-6">
                 <p>版权所有: 昆山乐帆软件科技有限公司</p>
                 <p>
                     <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow" class="hover:text-slate-400 transition">
