@@ -108,7 +108,7 @@
                     <span>iOS</span>
                 </a>
                 
-                <a id="androiddl" href="https://qiniu.upmemo.com/android_release/babydiary.apk" onclick="ga('send', 'event', 'android_button', 'click', 'android');" 
+                <a id="androiddl" href="javascript:void(0);" onclick="downloadAndroidApp(); ga('send', 'event', 'android_button', 'click', 'android');" 
                    class="flex-1 group inline-flex items-center justify-center gap-2 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base rounded-xl transition-all shadow-lg shadow-emerald-200 hover:-translate-y-0.5">
                     <svg class="w-5 h-5 group-hover:text-emerald-100 transition" fill="currentColor" viewBox="0 0 576 512"><path d="M420.55,301.93a24,24,0,1,1,24-24,24,24,0,0,1-24,24m-265.1,0a24,24,0,1,1,24-24,24,24,0,0,1-24,24m273.7-144.48,47.94-83a10,10,0,1,0-17.27-10h0l-48.54,84.07a301.25,301.25,0,0,0-246.56,0L116.18,64.45a10,10,0,1,0-17.27,10h0l47.94,83C64.53,202.22,8.24,285.55,0,384H576c-8.24-98.45-64.54-181.78-146.85-226.55"/></svg>
                     <span>Android</span>
@@ -362,18 +362,45 @@
         window.onload = function(){
             if(isWeiXin()){
                 var p = document.getElementById('iosdl');
-                p.setAttribute("href", "https://a.app.qq.com/o/simple.jsp?pkgname=com.upmemo.babydiary&g_f=991653");            
+                if (p) p.setAttribute("href", "https://a.app.qq.com/o/simple.jsp?pkgname=com.upmemo.babydiary&g_f=991653");            
                 var p2 = document.getElementById('androiddl');
-                p2.setAttribute("href", "https://a.app.qq.com/o/simple.jsp?pkgname=com.upmemo.babydiary&g_f=991653");            
+                if (p2) {
+                    p2.removeAttribute("onclick");
+                    p2.setAttribute("href", "https://a.app.qq.com/o/simple.jsp?pkgname=com.upmemo.babydiary&g_f=991653");            
+                }
             }
         }
     
         function isWeiXin(){
             var ua = window.navigator.userAgent.toLowerCase();
-            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-                return true;
+            return ua.match(/MicroMessenger/i) == 'micromessenger';
+        }
+
+        function downloadAndroidApp() {
+            var packageName = "com.upmemo.babydiary";
+            var ua = window.navigator.userAgent.toLowerCase();
+
+            if (isWeiXin()) {
+                window.location.href = "https://a.app.qq.com/o/simple.jsp?pkgname=" + packageName + "&g_f=991653";
+                return;
+            }
+
+            // 根据手机机型调用系统官方应用商店直接下载，不消耗自身流量
+            if (/huawei|honor/i.test(ua)) {
+                // 华为 / 荣耀手机
+                window.location.href = "appmarket://details?id=" + packageName;
+            } else if (/vivo/i.test(ua)) {
+                // vivo / iQOO 手机
+                window.location.href = "vivomarket://details?id=" + packageName;
+            } else if (/xiaomi|mi |redmi/i.test(ua)) {
+                // 小米 / 红米手机
+                window.location.href = "mimarket://details?id=" + packageName;
+            } else if (/oppo|oneplus|realme/i.test(ua)) {
+                // OPPO / 一加 / 真我手机
+                window.location.href = "oppomarket://details?packagename=" + packageName;
             } else {
-                return false;
+                // 通用安卓 market 协议（如三星、魅族等，弹出默认商店选择）
+                window.location.href = "market://details?id=" + packageName;
             }
         }
     </script>
