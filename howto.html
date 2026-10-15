@@ -13,14 +13,61 @@
             color: #334155;
             -webkit-font-smoothing: antialiased;
         }
-        /* 视频播放器样式 */
-        video {
+        /* 视频容器与比例约束 */
+        .video-box {
+            position: relative;
             width: 100%;
-            height: auto;
-            border-radius: 0.75rem;
-            background-color: #000;
+            aspect-ratio: 9 / 14;
+            max-height: 480px;
+            background: #0f172a;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1.25rem;
+        }
+        /* 悬浮毛玻璃播放遮罩 */
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.45) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            object-fit: cover; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 10;
+        }
+        .play-overlay:hover {
+            background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
+        }
+        .play-btn-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #0284c7;
+        }
+        .play-overlay:hover .play-btn-circle {
+            transform: scale(1.1);
+            background: #ffffff;
+            color: #0369a1;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+        }
+        .video-box.is-playing .play-overlay {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
     <script>
@@ -33,7 +80,7 @@
     </script>
 </head>
 
-<body class="bg-slate-50">
+<body class="bg-slate-50 min-h-screen flex flex-col">
 
     <nav class="bg-white/90 backdrop-blur sticky top-0 z-50 border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
@@ -57,123 +104,196 @@
         </div>
     </nav>
 
-    <header class="bg-white pt-12 pb-10 px-4 text-center border-b border-slate-100">
-        <h1 class="text-3xl font-extrabold text-slate-900 mb-4">轻松记录每一刻</h1>
-        <p class="text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            这是一个纯净的工具，也是一部温馨的作品。<br>
-            花几分钟观看视频，解锁 100% 的 App 潜能。
+    <header class="bg-white pt-14 pb-12 px-4 text-center border-b border-slate-100">
+        <span class="inline-block py-1 px-3 rounded-full bg-sky-50 text-sky-600 font-semibold text-xs tracking-wider mb-3">1 分钟上手指南</span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">轻松记录每一刻</h1>
+        <p class="text-slate-500 max-w-xl mx-auto leading-relaxed text-base">
+            这是一个纯净的记录工具，也是一部温馨的家庭作品。<br>
+            点击任意卡片观看演示，解锁 100% 的 App 潜能。
         </p>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-12">
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-1">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 1 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">1</span>
-                    <h3 class="font-bold text-slate-800">一分钟快速记录</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">1</span>
+                    <h3 class="font-bold text-slate-800 text-lg">一分钟快速记录</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/1_simple_record.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">极简设计，再忙也能轻松搞定。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_1_simple_record.jpg">
+                        <source src="./video/1_simple_record.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">极简纯净设计，图文语音快速发布，再忙也能轻松记录。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 2 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">2</span>
-                    <h3 class="font-bold text-slate-800">多种定位查找方式</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">2</span>
+                    <h3 class="font-bold text-slate-800 text-lg">多种定位查找方式</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/2_location_search.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">时间轴、搜索框，轻松找到每一件往事。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_2_location_search.jpg">
+                        <source src="./video/2_location_search.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">时间轴、全文搜索、年龄精准索引，随时找到每一件珍贵往事。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 3 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">3</span>
-                    <h3 class="font-bold text-slate-800">多宝宝成长对比</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">3</span>
+                    <h3 class="font-bold text-slate-800 text-lg">多宝宝成长对比</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/3_compare.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">二宝和同期的大宝像吗？一比便知。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_3_compare.jpg">
+                        <source src="./video/3_compare.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">二宝和同期的大宝像吗？同一月龄生长曲线与趣事一键同屏对比。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 4 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">4</span>
-                    <h3 class="font-bold text-slate-800">全局日历视图</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">4</span>
+                    <h3 class="font-bold text-slate-800 text-lg">全局日历视图</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/4_calendar.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">哪天记了，哪天没记，一目了然。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_4_calendar.jpg">
+                        <source src="./video/4_calendar.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">日历全景总览，哪天记了、哪天没记，成长足迹一目了然。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 5 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">5</span>
-                    <h3 class="font-bold text-slate-800">健康档案与生病记录</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">5</span>
+                    <h3 class="font-bold text-slate-800 text-lg">健康档案与生病记录</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/6_sick.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">体温曲线、用药记录，看病时不再慌乱。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_6_sick.jpg">
+                        <source src="./video/6_sick.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">体温趋势曲线、用药时间轴，去医院看病向医生陈述不再慌乱。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 6 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">6</span>
-                    <h3 class="font-bold text-slate-800">生活规律图表统计</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">6</span>
+                    <h3 class="font-bold text-slate-800 text-lg">生活规律图表统计</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/5_feeding.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">吃喝拉撒睡，数据化掌握宝宝规律。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_5_feeding.jpg">
+                        <source src="./video/5_feeding.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">喂奶、换尿布、睡眠规律，智能生成详尽直观的生物钟统计图。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 7 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">7</span>
-                    <h3 class="font-bold text-slate-800">一键生成成长电影</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">7</span>
+                    <h3 class="font-bold text-slate-800 text-lg">一键生成成长电影</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/7_slideshow.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">自动串联照片与视频，重温感动瞬间。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_7_slideshow.jpg">
+                        <source src="./video/7_slideshow.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">自动串联宝宝每月的照片与小视频，生日时播放重温成长感动。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition ring-2 ring-transparent hover:ring-sky-100">
+            <!-- 卡片 8 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-sky-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col ring-1 ring-sky-50">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
-                        <span class="bg-sky-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">8</span>
-                        <h3 class="font-bold text-slate-800">制作成长书</h3>
+                        <span class="bg-sky-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-sm">8</span>
+                        <h3 class="font-bold text-slate-800 text-lg">制作成长书</h3>
                     </div>
-                    <a href="print.html" class="text-xs bg-sky-50 text-sky-600 px-2 py-1 rounded hover:bg-sky-100 transition">查看详情</a>
+                    <a href="print.html" class="text-xs font-semibold bg-sky-50 text-sky-600 px-2.5 py-1 rounded-full hover:bg-sky-100 transition">了解详情 →</a>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/9_book.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">视频也能印进书里，支持微信扫码播放。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_9_book.jpg">
+                        <source src="./video/9_book.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">把日记印成实体书，手机录制的视频也能印进书里，扫码即可播放。</p>
             </div>
 
-            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition">
+            <!-- 卡片 9 -->
+            <div class="bg-white p-5 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 flex flex-col">
                 <div class="flex items-center gap-3 mb-4">
-                    <span class="bg-slate-100 text-slate-600 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">9</span>
-                    <h3 class="font-bold text-slate-800">智能分类汇总</h3>
+                    <span class="bg-sky-100 text-sky-700 w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm">9</span>
+                    <h3 class="font-bold text-slate-800 text-lg">智能分类汇总</h3>
                 </div>
-                <video controls preload="none">
-                    <source src="./video/8_category.mp4" type="video/mp4">
-                </video>
-                <p class="text-sm text-slate-500 mt-3">第一次叫妈妈、第一次走路...自动归档。</p>
+                <div class="video-box mx-auto">
+                    <div class="play-overlay" onclick="togglePlay(this)">
+                        <div class="play-btn-circle">
+                            <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <video controls preload="none" poster="./img/poster_8_category.jpg">
+                        <source src="./video/8_category.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <p class="text-sm text-slate-500 mt-4 leading-relaxed">第一次叫妈妈、第一次走路、童言童语...自定义标签智能归类。</p>
             </div>
 
         </div>
 
         <div class="text-center pt-16 pb-8">
-            <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition shadow-lg shadow-slate-200 transform hover:-translate-y-1">
+            <a href="index.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition shadow-lg shadow-slate-200 transform hover:-translate-y-0.5">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 下载 App 亲自体验
             </a>
@@ -181,11 +301,11 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-12">
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-auto">
         <div class="max-w-6xl mx-auto px-4 text-center">
             
             <div class="mb-10 flex justify-center">
-                <img src="./img/QR1.jpg" alt="关注公众号" class="w-full max-w-[400px] h-auto rounded-2xl shadow-lg border-4 border-slate-800/50" loading="lazy">
+                <img src="./img/QR1.jpg" alt="关注公众号" class="w-full max-w-[360px] h-auto rounded-2xl shadow-lg border-4 border-slate-800/50" loading="lazy">
             </div>
 
             <p class="text-white font-bold text-lg mb-6">
@@ -196,7 +316,7 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm font-medium">
-                <a href="howto.html" class="hover:text-white transition">如何使用</a>
+                <a href="index.html" class="hover:text-white transition">返回首页</a>
                 <a href="print.html" class="hover:text-white transition">打印成书</a>                
                 <a href="mailto:support@upmemo.com" class="hover:text-white transition flex items-center gap-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -216,20 +336,46 @@
     </footer>
 
     <script>
+        // 播放控制：点击遮罩开始播放并隐藏遮罩，保证一次只有一个视频播放
+        function togglePlay(overlay) {
+            const container = overlay.closest('.video-box');
+            const video = container.querySelector('video');
+            
+            // 暂停其他所有视频
+            document.querySelectorAll('video').forEach(v => {
+                if (v !== video) {
+                    v.pause();
+                    v.closest('.video-box').classList.remove('is-playing');
+                }
+            });
+
+            container.classList.add('is-playing');
+            video.play();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // 获取页面上所有的视频元素
             const videos = document.querySelectorAll('video');
 
             videos.forEach(video => {
-                // 监听每一个视频的 'play' 事件
-                video.addEventListener('play', function() {
-                    // 当某个视频开始播放时，遍历所有视频
+                const container = video.closest('.video-box');
+
+                video.addEventListener('play', () => {
+                    container.classList.add('is-playing');
                     videos.forEach(otherVideo => {
-                        // 如果其他视频不是当前正在播放的这个，就暂停它
                         if (otherVideo !== video) {
                             otherVideo.pause();
+                            otherVideo.closest('.video-box').classList.remove('is-playing');
                         }
                     });
+                });
+
+                video.addEventListener('pause', () => {
+                    // 当播放结束或暂停时，如果需要可重新显示遮罩，或保持原生控制条
+                });
+
+                video.addEventListener('ended', () => {
+                    container.classList.remove('is-playing');
+                    video.load(); // 播完重置回封面海报
                 });
             });
         });
